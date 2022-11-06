@@ -15,14 +15,20 @@ function buttonHover2(){
 }
 
 //'Elave et' butonuna basdiqda elave text-line yaradir
+let inputConatiner = document.querySelector('.input-container')
 let buttonElaveEt = document.querySelector('.elave-et')
 buttonElaveEt.addEventListener('click',elaveTextLineYarat)
+
 function elaveTextLineYarat(){
     let newInput = document.createElement('div')
-    let inputConatiner = document.querySelector('.input-container')
-    newInput.innerHTML+='<input type="text" class="input"><button type="button" class="x-button"><i class="fa-solid fa-circle-xmark"></i></button>'
+    newInput.innerHTML+=' <div class="parent-input"><input type="text" class="input"><button type="button" class="x-button"><i class="fa-solid fa-circle-xmark"></i></button></div>'
     inputConatiner.append(newInput)
+
+    // x -e basdiqda hemin text-line -in silinmesi
+    let xButtons = document.querySelectorAll('.x-button')
+    xButtons.forEach(item =>{
+        item.addEventListener('click',()=>{
+        item.parentElement.style.display='none'
+        })
+    }) 
 }
-
-
-
