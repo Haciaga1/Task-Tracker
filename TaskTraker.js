@@ -14,21 +14,67 @@ function buttonHover2(){
     button.style.backgroundColor='#833AE0'
 }
 
-//'Elave et' butonuna basdiqda elave text-line yaradir
-let inputConatiner = document.querySelector('.input-container')
-let buttonElaveEt = document.querySelector('.elave-et')
-buttonElaveEt.addEventListener('click',elaveTextLineYarat)
+//'Elave et' butonuna basdiqda metni list -e elave edir
+let list = document.querySelector('ul')
+let input = document.querySelector('input')
+let text;
 
-function elaveTextLineYarat(){
-    let newInput = document.createElement('div')
-    newInput.innerHTML+=' <div class="parent-input"><input type="text" class="input"><button type="button" class="x-button"><i class="fa-solid fa-circle-xmark"></i></button></div>'
-    inputConatiner.append(newInput)
+elaveEtButton= document.querySelector('.elave-et')
+elaveEtButton.addEventListener('click',()=>{
+    let newLI = document.createElement('div')
+    newLI.classList.add('parent-li')
+    text=input.value
+    newLI.innerHTML+=`<li>${text}</li><button id="list-x" type="button" class="li-x-button"><i class="fa-solid fa-circle-xmark"></i></button>`
+    //Eger input-u bos buraxib 'Elave et' duymesine basdiqda error mesaji cixardir
+    if(input.value==0){
+        alert('Boş mətin daxil etmək olmaz!')
+    }
+    else{
+        list.append(newLI)
+    }
+    input.value=null;
 
-    // x -e basdiqda hemin text-line -in silinmesi
-    let xButtons = document.querySelectorAll('.x-button')
-    xButtons.forEach(item =>{
-        item.addEventListener('click',()=>{
-        item.parentElement.style.display='none'
+    //Listde olan x butonuna basdiqda hemin metni listden silir
+    let listX = document.querySelectorAll('#list-x')
+        listX.forEach(item => {
+            item.addEventListener('click',()=>{
+                item.parentElement.remove()
+            })
         })
-    }) 
-}
+    })
+    
+//Input -un x butonuna basdiqda input.value ni silir
+let inputX = document.querySelector('#input-x')
+inputX.addEventListener('click',()=>{
+    input.value=null;
+})
+
+//Sort List
+let asc=true;
+let sortButton = document.querySelector('.sort-button')
+let sortIcon = document.querySelector('#sort-icon')
+sortButton.addEventListener('click',()=>{
+    sortIcon.classList.toggle('fa-arrow-up-short-wide')
+    let listArr=[];
+    for(let i=0; i<list.childElementCount; i++){
+        listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue;
+    }
+
+        listArr.sort((a,b)=>{
+            return a-b;
+        })
+        if(asc==true){
+            for(let i=0; i<list.childElementCount; i++){
+                listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+            }
+            asc=false;
+        }
+        else if(asc==false){
+            listArr=listArr.reverse()
+            for(let i=0; i<list.childElementCount; i++){
+                listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+            }
+            asc=true;
+        }
+
+})

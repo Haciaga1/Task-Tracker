@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 .container{
     width: 335px;
@@ -43,27 +44,37 @@
 .input-container{
     width: 286px;
     min-height: 44px;
-    margin-left: 25px;
+    margin-left: 28px;
     margin-bottom: 18px;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     padding-top: 10px;
-    padding-left: 27px;
+    padding-left: 22px;
     padding-bottom: 9px;
 }
-.parent-input{
-    margin-bottom: 2px;
+.input-div{
+    margin-bottom: 3px;
+}
+ul{
+    list-style: none;
+}
+li{
+    width: 140px;
+}
+.parent-li{
     display: flex;
-    width: 235px;
-    padding-left:8px;
+    margin-left: -5px;
+    margin-bottom: 2px;
+    width: 245px;
+    padding-left:4px;
     border: 1px solid #ffffff;
     border-radius: 6px;
 }
-.parent-input:hover{
+.parent-li:hover{
     border-color:  #C4C4C4;
     background-color: #efefef;
 }
-.parent-input:hover .input{
+.parent-li:hover .input{
     background-color: #efefef;
 }
 .input{
@@ -73,11 +84,21 @@
     border: none;
     outline: none;
 }
+.input::placeholder{
+    color: rgb(202, 202, 202);
+}
+.li-x-button{
+    margin-left: 77px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+}
 .x-button{
     background-color: transparent;
     border: none;
     position: relative;
-    top: 2px;
+    top: 1px;
     width: 20px;
     height: 17px;
 }
@@ -87,6 +108,9 @@
     height: 17px;
 }
 .x-button .fa-solid:hover{
+    color: #833AE0;
+}
+.li-x-button .fa-solid:hover{
     color: #833AE0;
 }
 
