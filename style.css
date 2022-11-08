@@ -8,6 +8,7 @@
 }
 body{
     background: linear-gradient(35deg,rgba(117, 65, 166, 0.778), rgba(143, 139, 19, 0.575));
+    height: 100vh;
 }
 .container{
     background-color: white;
