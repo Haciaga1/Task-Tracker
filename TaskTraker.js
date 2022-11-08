@@ -15,7 +15,7 @@ function buttonHover2(){
 }
 
 //'Elave et' butonuna basdiqda metni list -e elave edir
-let list = document.querySelector('ul')
+let list = document.querySelector('.drag-drop-area')
 let input = document.querySelector('input')
 let text;
 
@@ -59,22 +59,47 @@ sortButton.addEventListener('click',()=>{
     for(let i=0; i<list.childElementCount; i++){
         listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue;
     }
-
-        listArr.sort((a,b)=>{
-            return a-b;
-        })
+    //Daxil etdiyimiz ilk 
+    if(isNaN(listArr[0])){
+        listArr.sort()
         if(asc==true){
             for(let i=0; i<list.childElementCount; i++){
-                listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+                list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
             }
             asc=false;
         }
         else if(asc==false){
             listArr=listArr.reverse()
             for(let i=0; i<list.childElementCount; i++){
-                listArr[i]=list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+                list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
             }
             asc=true;
         }
+    }
+    else if(!isNaN(listArr[0])){
+        listArr.sort((a,b)=>{
+            return a-b;
+        })
+        if(asc==true){
+            for(let i=0; i<list.childElementCount; i++){
+                list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+            }
+            asc=false;
+        }
+        else if(asc==false){
+            listArr=listArr.reverse()
+            for(let i=0; i<list.childElementCount; i++){
+                list.children[i].childNodes[0].childNodes[0].nodeValue=listArr[i]
+            }
+            asc=true;
+        }
+    }
+    
+})
+
+// Drag drop
+const dragArea = document.querySelector('.drag-drop-area')
+new Sortable(dragArea, {
+    animation: 250
 
 })
