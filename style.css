@@ -17,6 +17,7 @@ body{
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     padding-bottom: 19px;
+    box-shadow: 2px 2px 210px rgba(227, 184, 97, 0.778);
 }
 .yellow-bar{
     height: 28px;
