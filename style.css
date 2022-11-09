@@ -58,13 +58,15 @@ body{
     padding-bottom: 9px;
 }
 .input-div{
-    margin-bottom: 3px;
+    margin-bottom: 7px;
 }
 ul{
     list-style: none;
 }
 li{
     width: 140px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 .parent-li{
     display: flex;
@@ -93,6 +95,7 @@ li{
     color: rgb(202, 202, 202);
 }
 .li-x-button{
+    margin-top: 4px;
     margin-left: 77px;
     width: 20px;
     height: 20px;
